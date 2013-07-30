@@ -1,5 +1,7 @@
 <h1><%= @user.handle %> - <%= @user.name %></h1>
 
-<% @user_tweets.each do |tweet| %>
+<%= image_tag(@user.avatar_url) %>
+
+<% @user.tweets.each do |tweet| %>
 <div><%= link_to tweet.content, tweet_path(tweet) %></div>
 <% end %>

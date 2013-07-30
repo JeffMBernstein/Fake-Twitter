@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	
-	before_action :check_user_login
+before_action :check_user_login, except: [:new, :create]
 
 	def new
 		@user = User.new
@@ -16,13 +16,18 @@ class UsersController < ApplicationController
 		@user_tweets = @user.tweets
 	end
 
+	def edit
+	end
+
+	def update
+		@current_user.update_attributes(user_params)
+		redirect_to user_path(@current_user)
+	end
+
 	private
 
 	def user_params
-		params.require(:user).permit(:name, :email, :handle)
+		params.require(:user).permit(:name, :email, :handle, :avatar)
 	end
 
-	def check_user_login
-		@current_user = User.find(session[:user_id])
-	end
 end

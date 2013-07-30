@@ -1,4 +1,5 @@
 class LoginController < ApplicationController
+  
   def new_session
   	@user = User.new
   end
@@ -14,5 +15,7 @@ class LoginController < ApplicationController
   end
 
   def logout
+  	reset_session
+  	redirect_to login_path
   end
 end

@@ -7,6 +7,8 @@ Twitter::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
+  get '/profile', to: 'users#edit'
+
   resources :tweets, except: [:edit, :update]
   # generates the 7 routes (index, edit, create, new, destroy, show, update)
 
